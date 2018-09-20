@@ -1,0 +1,60 @@
+.input-container {
+  flex-shrink: 0;
+  width: 90%;
+  display: flex;
+  align-items: center;
+  margin: 0.5em 0;
+}
+
+/* Labels & input fields */
+
+.input-container > .label {
+  flex: 0 0 150px;
+	font-family: muli-semi-bold;
+	font-size: 1em;
+  color: #24233A;
+  letter-spacing: 0.5px;
+}
+
+.custom-input:focus {
+  outline:none;
+}
+
+.input-container > .field {
+  flex: 0 1 80%;
+  height: 2.250em;
+  font-family: muli-regular;
+  font-size: 16px;
+  border:none;
+  border-bottom:1px solid rgba(36,35,58,0.25);
+}
+
+.field::placeholder {
+  color: #D3D3D8;
+  opacity: 1; 
+  letter-spacing: 0.2px;
+  font-family: muli-semi-bold;
+  font-size: 15px;
+}
+
+.field::-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: #D3D3D8;
+  letter-spacing: 0.2px;
+  font-family: muli-semi-bold;
+  font-size: 15px;
+}
+
+.field::-ms-input-placeholder { /* Microsoft Edge */
+  color: #D3D3D8;
+  letter-spacing: 0.2px;
+  font-family: muli-semi-bold;
+  font-size: 15px;
+}
+
+
+/* Paddings & margin arrangements for  fields inside each section */
+
+.sectionLabel {
+  font-size: 14px !important; 
+  padding: 0px 0px 0px 15px;
+}
