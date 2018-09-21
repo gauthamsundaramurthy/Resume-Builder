@@ -6,6 +6,7 @@ const mapStateToProps = (state, ownProps) => {
   return {
     additionalInfo_education: state.saveBasicDetails.education.additionalInfo,
     additionalInfo_experience: state.saveBasicDetails.experience.additionalInfo,
+    additionalInfo_skills: state.saveBasicDetails.skills.additionalInfo,
     formData: state.saveBasicDetails
   }
 }

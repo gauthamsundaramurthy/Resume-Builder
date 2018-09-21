@@ -16,6 +16,7 @@ class HomePage extends React.Component {
       [key]: 'field',
       [value]: ''
     })
+
     this.props.addDynamicField(section)
   }
 
@@ -94,6 +95,21 @@ class HomePage extends React.Component {
             </div>
           </div>
 
+          <div className='section-container'>
+            <div className='title'> Skills  </div>
+            <div className='description'>
+              {
+                this.props.additionalInfo_skills.map((data, index) =>
+                  <div key={index} className='input-container'>
+                    <div contentEditable={true} id={'skills' + ' ' + index} className='label sectionLabel' onInput={this.updateFieldName.bind(this)} >Field</div>
+                    <input type='text' name='skills' id={index} placeholder='value' className='field sectionField' onChange={this.updateFieldValue.bind(this)} />
+                  </div>
+                )
+              }
+              <div className='add-field' onClick={this.addField.bind(this, 'skills', this.props.additionalInfo_experience.length)}> + Field </div>
+            </div>
+          </div>
+    
           <button className='button' onClick={this.submitForm} >Submit</button>
         </div>
 

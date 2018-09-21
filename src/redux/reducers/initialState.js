@@ -13,6 +13,9 @@ export const initialState = {
       company: '',
       designation: '',
       additionalInfo: []
+    },
+    skills: {
+      additionalInfo: []
     }
   }
 }
