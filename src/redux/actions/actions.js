@@ -24,11 +24,12 @@ export function addDynamicField (section) {
   }
 }
 
-export function updateFieldValues (section, index, value) {
+export function updateField (actionType, section, index, fieldName, fieldValue) {
   return {
-    type: actionTypes.UPDATE_FIELD_VALUES,
+    type: actionType,
     section,
     index,
-    value
+    fieldName,
+    fieldValue
   }
 }

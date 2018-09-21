@@ -15,48 +15,39 @@ export function saveBasicDetails (state = initialState.resume, action) {
       return Object.assign({}, state, {
         [action.section]: { ...state[action.section], 'additionalInfo': [...state[action.section]['additionalInfo'], {'field': 'value'}] }
       })
-    case actionsTypes.UPDATE_FIELD_VALUES:
-      // return Object.assign({}, state, {
-      //   [action.section]: Object.assign({}, state = state[action.section], 
-      //     { 'additionalInfo':   state['additionalInfo'].map((data, index) => {
-      //       if (index === action.index) {
-      //         return Object.assign({}, state['additionalInfo'][index], {
-      //           'field': action.value
-      //         })
-      //       }
-      //       return data
-      //     })
-      //     })
-      // })
-      return {
-        ...state,
-        [action.section]: {
-          ...state[action.section],
-          additionalInfo: state[action.section]['additionalInfo'].map((data, index) => {          
-            if (index !== action.index) {
-              console.log(index)
-              console.log(action.index)
-              return data
+    case actionsTypes.UPDATE_FIELD_VALUE:
+      return Object.assign({}, state, {
+        [action.section]: Object.assign({}, state = state[action.section], 
+          { 'additionalInfo':   state['additionalInfo'].map((data, index) => {
+            if (index === Number(action.index)) {
+              return Object.assign({}, state['additionalInfo'][index], {
+                [action.fieldName]: action.fieldValue
+              })
             }
-            return {
-              field: action.value
-            }
+            return data
           })
+        })
+      })
+    case actionsTypes.UPDATE_FIELD_NAME:
+      state[action.section]['additionalInfo'].map((data, index) => {
+        if (index === Number(action.index)) {
+          state[action.section]['additionalInfo'][index] = {}
         }
-      }
+        return state
+      })
+      return Object.assign({}, state, {
+        [action.section]: Object.assign({}, state = state[action.section], 
+          { 'additionalInfo':   state['additionalInfo'].map((data, index) => {
+            if (index === Number(action.index)) {
+              return Object.assign({}, state['additionalInfo'][index], {
+                [action.fieldName]: action.fieldValue
+              })
+            }
+            return data
+          })
+        })
+      })   
     default:
       return state
   }
 }
-
-// chatHistory: Object.assign({}, state = state.chatHistory, {
-//   [action.data.channel_id]: state[action.data.channel_id].map((messageObj, index) => {
-//     if (messageObj.messageId === action.data.message_id) {
-//       return Object.assign({}, state[action.data.channel_id][index], {
-//         viewedStatus: 2
-//       })
-//     }
-//     return messageObj
-//   })
-// })
-

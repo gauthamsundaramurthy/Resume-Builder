@@ -8,15 +8,38 @@ class HomePage extends React.Component {
   constructor () {
     super()
     this.addField = this.addField.bind(this)
-    // this.updateFieldValues = this.updateFieldValues.bind(this)
   }
 
-  addField (section, e) {
+  addField (section, index, e) {
+    let key = (section + index + 'key').toString()
+    let value = (section + index + 'value').toString()
+    this.setState({
+      [key]: 'field',
+      [value]: ''
+    })
     this.props.addDynamicField(section)
   }
-  
-  updateFieldValues (e) {
-    this.props.updateFieldValues(e.target.name, e.target.id, e.target.value)
+
+  updateFieldName (e) {
+    let section = e.target.id.split(' ')[0]
+    let index = e.target.id.split(' ')[1]
+    let fieldName = e.target.innerHTML
+    let fieldValue = this.state[section + index + 'value']
+    this.setState({
+      [section + index + 'key']: fieldName
+    })
+    this.props.updateField('UPDATE_FIELD_NAME', section, index, fieldName, fieldValue)
+  }
+
+  updateFieldValue (e) {
+    let section = e.target.name
+    let index = e.target.id
+    let fieldName = this.state[section + index + 'key']
+    let fieldValue = e.target.value
+    this.setState({
+      [section + index + 'value']: fieldValue
+    })
+    this.props.updateField('UPDATE_FIELD_VALUE', section, index, fieldName, fieldValue)
   }
 
   render () {
@@ -37,12 +60,12 @@ class HomePage extends React.Component {
               {
                 this.props.additionalInfo_education.map( (data, index) =>
                   <div key={index} className='input-container'>
-                    <div contentEditable={true} className='label sectionLabel'> Field </div>
-                    <input type='text' name='education' id={index} placeholder='value' className='field sectionField' onChange={this.updateFieldValues.bind(this)} />
+                    <div contentEditable={true}  id={'education' + ' ' + index} className='label sectionLabel' onInput={this.updateFieldName.bind(this)}>Field</div>
+                    <input type='text' name='education' id={index} placeholder='value' className='field sectionField' onChange={this.updateFieldValue.bind(this)} />
                   </div>
                 )
               }
-              <div className='add-field' onClick={this.addField.bind(this, 'education')}> + Field </div>
+              <div className='add-field' onClick={this.addField.bind(this, 'education', this.props.additionalInfo_education.length)}> + Field </div>
             </div>
           </div>
 
@@ -52,14 +75,14 @@ class HomePage extends React.Component {
               <CustomInputContainer type='text' label='Company' placeholder='Company name ' name='experience company' labelCss='label sectionLabel' fieldCss='field sectionField' />
               <CustomInputContainer type='text' label='Designation' placeholder='Designation' name='experience designation' labelCss='label sectionLabel' fieldCss='field sectionField' />
               {
-                this.props.additionalInfo_experience.map(data =>
-                  <div className='input-container'>
-                    <div contentEditable={true} className='label sectionLabel' > Field </div>
-                    <input type='text' placeholder='value' className='field sectionField' />
+                this.props.additionalInfo_experience.map((data, index) =>
+                  <div key={index} className='input-container'>
+                    <div contentEditable={true} id={'experience' + ' ' + index} className='label sectionLabel' onInput={this.updateFieldName.bind(this)} >Field</div>
+                    <input type='text' name='experience' id={index} placeholder='value' className='field sectionField' onChange={this.updateFieldValue.bind(this)} />
                   </div>
                 )
               }
-              <div className='add-field' onClick={this.addField.bind(this, 'experience')}> + Field </div>
+              <div className='add-field' onClick={this.addField.bind(this, 'experience', this.props.additionalInfo_experience.length)}> + Field </div>
             </div>
           </div>
 

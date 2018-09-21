@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import {addDynamicField, updateFieldValues} from '../redux/actions/actions'
+import {addDynamicField, updateField} from '../redux/actions/actions'
 import HomePage from '../components/homePage/HomePage'
 
 const mapStateToProps = (state, ownProps) => {
@@ -16,10 +16,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     addDynamicField: (section) => {
       dispatch(addDynamicField(section))
     },
-    updateFieldValues: (section, index, value) => {
-      dispatch(updateFieldValues(section, index, value))
+    updateField: (actionType, section, index, fieldName, fieldValue) => {
+      dispatch(updateField(actionType, section, index, fieldName, fieldValue))
     }
-
   }
 }
 
