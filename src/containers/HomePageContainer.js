@@ -5,7 +5,8 @@ import HomePage from '../components/homePage/HomePage'
 const mapStateToProps = (state, ownProps) => {
   return {
     additionalInfo_education: state.saveBasicDetails.education.additionalInfo,
-    additionalInfo_experience: state.saveBasicDetails.experience.additionalInfo
+    additionalInfo_experience: state.saveBasicDetails.experience.additionalInfo,
+    formData: state.saveBasicDetails
   }
 }
 

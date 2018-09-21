@@ -1,13 +1,12 @@
 import React from 'react'
 import './HomePage.css'
-
-// import CustomInput from '../reusables/customInput/CustomInput'
 import CustomInputContainer from '../../containers/CustomInputContainer'
 
 class HomePage extends React.Component {
   constructor () {
     super()
     this.addField = this.addField.bind(this)
+    this.submitForm = this.submitForm.bind(this)
   }
 
   addField (section, index, e) {
@@ -18,6 +17,15 @@ class HomePage extends React.Component {
       [value]: ''
     })
     this.props.addDynamicField(section)
+  }
+
+  submitForm () {
+    const formData = this.props.formData
+    if (formData.name.trim() && formData.email.trim() && formData.address.trim() && formData.contactNumber.trim() && formData.education.institute.trim() && formData.education.degree.trim() && formData.experience.company.trim() && formData.experience.designation.trim()) {
+      // valid form
+    } else {
+      alert('Incomplete Resume')
+    }
   }
 
   updateFieldName (e) {
@@ -86,7 +94,7 @@ class HomePage extends React.Component {
             </div>
           </div>
 
-          <button className='button'>Submit</button>
+          <button className='button' onClick={this.submitForm} >Submit</button>
         </div>
 
       </div>
