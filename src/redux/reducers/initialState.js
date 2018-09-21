@@ -6,11 +6,13 @@ export const initialState = {
     contactNumber: '',
     education: {
       institute: '',
-      degree: ''
+      degree: '',
+      additionalInfo: []
     },
     experience: {
       company: '',
-      designation: ''
+      designation: '',
+      additionalInfo: []
     }
   }
 }

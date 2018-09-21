@@ -2,15 +2,17 @@
   flex-shrink: 0;
   width: 90%;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   margin: 0.5em 0;
 }
 
 /* Labels & input fields */
 
 .input-container > .label {
-  flex: 0 0 150px;
-	font-family: muli-semi-bold;
+  width: 150px;
+  flex-grow: 0;
+  padding-top: 10px; 
+  font-family: muli-semi-bold;
 	font-size: 1em;
   color: #24233A;
   letter-spacing: 0.5px;
@@ -51,10 +53,38 @@
   font-size: 15px;
 }
 
-
 /* Paddings & margin arrangements for  fields inside each section */
 
 .sectionLabel {
   font-size: 14px !important; 
   padding: 0px 0px 0px 15px;
+  outline: 0;
+}
+
+/* mobile devices */
+
+@media only screen and (max-width: 550px) {
+  .input-container {
+    flex-shrink: 0;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 0.5em 0;
+  }
+
+  .input-container > .field {
+    width: 100%;
+    height: 2.250em;
+    font-family: muli-regular;
+    font-size: 16px;
+    border:none;
+    border-bottom:1px solid rgba(36,35,58,0.25);
+  }
+
+  .sectionField {
+    font-size: 14px !important; 
+    margin: 0px 0px 0px 15px;
+    outline: 0;
+  }
 }

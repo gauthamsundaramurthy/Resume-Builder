@@ -16,3 +16,19 @@ export function saveSectionInfo (infoLevel, field, value) {
     value
   }
 }
+
+export function addDynamicField (section) {
+  return {
+    type: actionTypes.ADD_DYNAMIC_FIELD,
+    section
+  }
+}
+
+export function updateFieldValues (section, index, value) {
+  return {
+    type: actionTypes.UPDATE_FIELD_VALUES,
+    section,
+    index,
+    value
+  }
+}

@@ -12,13 +12,11 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     saveBasicInfo: (field, value) => {
       let section = field.split(' ')[0]
-      console.log(section)
       if (section === 'education') {
         dispatch(saveSectionInfo('education', field.split(' ')[1], value))
       } else if (section === 'experience') {
         dispatch(saveSectionInfo('experience', field.split(' ')[1], value))
       } else {
-        console.log('........... ')
         dispatch(saveBasicInfo(field, value))
       }
     }
